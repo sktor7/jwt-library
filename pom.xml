@@ -1,8 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.techsync.security</groupId>
+
+<!--   <groupId>com.techsync.security</groupId>
   <artifactId>jwt-library</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.0</version>	-->
+  
+  	<groupId>io.github.sktor7</groupId>
+    <artifactId>techsync-jwt-library</artifactId>
+    <version>1.0.0</version>
+    
+    <packaging>jar</packaging>
+    <name>JWT Security Library</name>
+    <description>JWT-based authentication for Spring Boot microservices</description>
+    <url>https://github.com/sktor7/jwt-library</url>
 
   	<parent>
 	    <groupId>org.springframework.boot</groupId>
@@ -60,4 +71,84 @@
     </dependency>	
 </dependencies>
 
+	  <!-- Licensing for Maven Central -->
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    
+       <!-- Developer Information -->
+    <developers>
+        <developer>
+            <id>sktor7</id>
+            <name>Sourabh</name>
+            <email>saurabhpatil.ingenio@gmail.com</email>
+        </developer>
+    </developers>
+
+	   <!-- SCM Information (GitHub Link) -->
+    <scm>
+        <connection>scm:git:https://github.com/sktor7/jwt-library.git</connection>
+        <developerConnection>scm:git:ssh://github.com/sktor7/jwt-library.git</developerConnection>
+        <url>https://github.com/sktor7/jwt-library</url>
+    </scm>
+    
+        <!-- Distribution Management (Maven Central) -->
+    <distributionManagement>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+    
+    <!-- Build and Deployment Plugins -->
+    <build>
+        <plugins>
+            <!-- Source Code Attachment -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <!-- GPG Signing for Deployment -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+      
+                  <!-- Maven Deploy Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+            </plugin>
+        </plugins>
+    </build>
+    
+    
 </project>
